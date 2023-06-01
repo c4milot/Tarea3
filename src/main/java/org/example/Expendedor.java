@@ -55,7 +55,7 @@ public class Expendedor{
     public Producto comprarProducto(Moneda mon, int cualP) throws PagoIncorrectoException, NoHayProductoException,PagoInsuficienteException{
         Producto p = null;
         if (mon!=null){
-            if ((cualP==1)||(cualP==2)){
+            if ((cualP==COCA)||(cualP==SPRITE)){
                 if (mon.getValor()>=preciosB){
                     switch (cualP){
                         case COCA:  p = depcoca.getBebida(); break;
