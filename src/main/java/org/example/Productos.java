@@ -1,7 +1,7 @@
 package org.example;
 
 public enum Productos {
-    COCACOLA,
+    COCA,
     SPRITE,
     SNICKERS,
     SUPER8;

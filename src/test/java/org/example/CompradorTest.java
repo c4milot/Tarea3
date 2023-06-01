@@ -9,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CompradorTest {
     private Comprador compradorPrueba;
-    private Expendedor expendedorPrueba = new Expendedor(3,500,200);
+    private Expendedor expendedorPrueba = new Expendedor(3);
     private Moneda monedaPrueba = new Moneda1000();
     @BeforeEach
     void setUp() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
-        compradorPrueba = new Comprador(monedaPrueba, 1, expendedorPrueba);
+        compradorPrueba = new Comprador(monedaPrueba, Productos.COCA, expendedorPrueba);
     }
 
     @AfterEach

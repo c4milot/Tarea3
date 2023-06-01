@@ -13,7 +13,7 @@ class ExpendedorTest {
 
     @BeforeEach
     void setUp() {
-        expendedorPrueba = new Expendedor(3,500, 300);
+        expendedorPrueba = new Expendedor(3);
     }
 
     @AfterEach
@@ -24,25 +24,25 @@ class ExpendedorTest {
     @DisplayName("Test compra una Bebida")
     public void testCompraUnaBebida() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         mon = new Moneda1000();
-        assertNotNull(expendedorPrueba.comprarProducto(mon, 1));
+        assertNotNull(expendedorPrueba.comprarProducto(mon, Productos.COCA));
     }
     @Test
     @DisplayName("Test compra tres Bebida")
     public void testCompraTresBebida() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         mon = new Moneda1000();
-        assertNotNull(expendedorPrueba.comprarProducto(mon, 1));
-        assertNotNull(expendedorPrueba.comprarProducto(mon, 1));
-        assertNotNull(expendedorPrueba.comprarProducto(mon, 1));
+        assertNotNull(expendedorPrueba.comprarProducto(mon, Productos.COCA));
+        assertNotNull(expendedorPrueba.comprarProducto(mon, Productos.COCA));
+        assertNotNull(expendedorPrueba.comprarProducto(mon, Productos.COCA));
     }
     @Test
     @DisplayName("Test NoHayProductoException")
     public void testCompraCuatroBebida() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         mon = new Moneda1000();
         Exception exception = assertThrows(NoHayProductoException.class, () -> {
-            expendedorPrueba.comprarProducto(mon, 1);
-            expendedorPrueba.comprarProducto(mon, 1);
-            expendedorPrueba.comprarProducto(mon, 1);
-            expendedorPrueba.comprarProducto(mon, 1);
+            expendedorPrueba.comprarProducto(mon, Productos.COCA);
+            expendedorPrueba.comprarProducto(mon, Productos.COCA);
+            expendedorPrueba.comprarProducto(mon, Productos.COCA);
+            expendedorPrueba.comprarProducto(mon, Productos.COCA);
         });
     }
     @Test
@@ -50,14 +50,14 @@ class ExpendedorTest {
     public void testCompraPocoDinero() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         mon = new Moneda100();
         Exception exception = assertThrows(PagoInsuficienteException.class, () -> {
-            expendedorPrueba.comprarProducto(mon, 1);
+            expendedorPrueba.comprarProducto(mon, Productos.COCA);
         });
     }
     @Test
     @DisplayName("Test PagoIncorrectoException")
     public void testCompraSinDinero() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         Exception exception = assertThrows(PagoIncorrectoException.class, () -> {
-            expendedorPrueba.comprarProducto(null, 1);
+            expendedorPrueba.comprarProducto(null, Productos.COCA);
         });
     }
     @Test
